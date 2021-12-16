@@ -134,8 +134,20 @@ public class PathExample1 {
 
     // Joining paths
     public void joinPaths() {
+        // with get()
         Path joined = Paths.get("/WorkingFolder/", "Dec16/file1.txt");
         System.out.println("Joined /WorkingFolder/ and Dec16/file1.txt to: " + joined);
+
+        // with resolve()
+        Path part1 = Paths.get("/WorkingFolder/");
+        System.out.println("Join " + part1 + " and Dec16/file1.txt using resolve: " + part1.resolve("Dec16/file1.txt"));
+
+        // relativize() constructs a path from one location in the file system to another location
+        Path p1 = Paths.get("first");
+        Path p2 = Paths.get("second");
+        System.out.println("Relativizing " + p2 + " to " + p1 + ": " + p1.relativize(p2));
+        System.out.println("Relativizing " + p1 + " to " + p2 + ": " + p2.relativize(p1));
+
     }
 
     // Removing paths
